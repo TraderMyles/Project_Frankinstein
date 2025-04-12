@@ -1,6 +1,6 @@
-from settings import *
-from support import *
-from timer import Timer
+from src.settings import *
+from src.support import *
+from monster import Monster
 
 class Game:
     def __init__(self):
@@ -9,9 +9,20 @@ class Game:
         pygame.display.set_caption('Monster Battle')
         self.clock = pygame.time.Clock()
         self.running = True
+        self.import_assets()
 
         # groups 
         self.all_sprites = pygame.sprite.Group()
+
+        # data
+        player_monster_lists = ['Sparchu', 'Cleaf', 'Jacana']
+        self.player_monsters = [Monster(name, self.back_surfs[name]) for name in player_monster_lists]
+        self.monster = self.player_monsters[0]
+        self.all_sprites.add(self.monster)
+
+    def import_assets(self):
+        self.back_surfs = folder_importer('images', 'back')
+        print(self.back_surfs)
 
     def run(self):
         while self.running:

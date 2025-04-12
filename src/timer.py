@@ -1,4 +1,4 @@
-from settings import *
+from src.settings import *
 
 class Timer:
 	def __init__(self, duration, repeat = False, autostart = False, func = None):
