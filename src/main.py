@@ -21,13 +21,14 @@ class Game:
         self.monster = self.player_monsters[0]
         self.all_sprites.add(self.monster)
         opponent_name = 'Jacana'
-        opponent_image = self.back_surfs[opponent_name]
-        self.opponent = Monster(opponent_name, opponent_image)
-        self.all_sprites.add(self.opponent)
+        opponent_image = self.front_surfs[opponent_name]
+        self.opponent = Opponent(opponent_name, opponent_image, [self.all_sprites])
+        # self.all_sprites.add(self.opponent)
 
     def import_assets(self):
         self.back_surfs = folder_importer('images', 'back')
         self.bg_surfs = folder_importer('images', 'other')
+        self.front_surfs = folder_importer('images', 'front')
 
     def run(self):
         while self.running:
