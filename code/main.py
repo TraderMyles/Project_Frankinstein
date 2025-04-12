@@ -4,4 +4,4 @@ from timer import Timer
 
 class Game:
     def __init__(self):
-        pygame
+        pygame.self = self
