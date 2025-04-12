@@ -1,6 +1,6 @@
 from src.settings import *
 from src.support import *
-from monster import Monster
+from src.monster import Monster
 
 class Game:
     def __init__(self):
@@ -22,7 +22,7 @@ class Game:
 
     def import_assets(self):
         self.back_surfs = folder_importer('images', 'back')
-        print(self.back_surfs)
+        self.bg_surfs = folder_importer('images', 'other')
 
     def run(self):
         while self.running:
@@ -35,6 +35,7 @@ class Game:
             self.all_sprites.update(dt)
 
             # draw  
+            self.display_surface.blit(self.bg_surfs['bg'], (0,0))
             self.all_sprites.draw(self.display_surface)
             pygame.display.update()
         
