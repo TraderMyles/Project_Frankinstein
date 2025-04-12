@@ -1,6 +1,7 @@
 from src.settings import *
 from src.support import *
-from src.monster import Monster
+from src.monster import Monster, Opponent
+from random import randint
 
 class Game:
     def __init__(self):
@@ -19,6 +20,10 @@ class Game:
         self.player_monsters = [Monster(name, self.back_surfs[name]) for name in player_monster_lists]
         self.monster = self.player_monsters[0]
         self.all_sprites.add(self.monster)
+        opponent_name = 'Jacana'
+        opponent_image = self.back_surfs[opponent_name]
+        self.opponent = Monster(opponent_name, opponent_image)
+        self.all_sprites.add(self.opponent)
 
     def import_assets(self):
         self.back_surfs = folder_importer('images', 'back')
